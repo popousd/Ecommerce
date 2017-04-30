@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Article:detail{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Article:detail page</h1>
+    {% for article in article %}
+        <div class="">
+
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.author }} le {{ article.createdAt|date("d-m-Y") }}</p>
+            <hr>
+            <div>
+                {{ article.content }}
+            </div>
+            <a href="{{ path("allArticles")}}">
+                Voir l'article
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

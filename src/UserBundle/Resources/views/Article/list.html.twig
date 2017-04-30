@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}UserBundle:Article:list{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a href="{{ path('fos_user_security_login') }}"> Deconnexion{{ ''|trans({}, 'FOSUserBundle') }}</a>
+        <a href="{{ path('addArticle') }}">Ajouter un article</a>
+        <a href="{{ path('deleteArticle') }}">Supprimer un article</a>
+    </div>
+
+
+    <h1>Liste des articles</h1>
+
+    <table>
+        <tr>
+            <th>Modele</th>
+            <th>Marque</th>
+            <th>Ajouter au Panier</th>
+        </tr>
+        {%  for art in articles %}
+            <tr>
+                <td>{{ art.title }}</td>
+                <td>{{ art.brand }}</td>
+                <td><a href="{{ path("deleteArticle", {"id": art.id}) }}"</td>
+                Panier
+                </a>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('fos_user_security_login') }}"> Deconnexion{{ ''|trans({}, 'FOSUserBundle') }}</a>
+{% endblock %}
