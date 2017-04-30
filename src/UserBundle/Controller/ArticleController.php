@@ -13,6 +13,13 @@ class ArticleController extends Controller
      */
     public function addAction()
     {
+        $form = $this->createFormBuilder()
+            ->add('title', TextType::class)
+            ->add('brand', TextType::class)
+            ->add('description', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Post'))
+            ->getForm();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $article = new Article();
@@ -32,7 +39,7 @@ class ArticleController extends Controller
         $this->redirectToRoute('detailAction', array('id' => $id));
 
         return $this->render('UserBundle:Article:add.html.twig', array(
-            // ...
+            'form' => $form->createView(),
         ));
     }
 

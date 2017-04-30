@@ -7,10 +7,14 @@
     <div>
         <form action="" method="">
             <input type="text" name="title">
-            <input type="text" name="author">
-            <textarea name="content"></textarea>
+            <input type="text" name="brand">
+            <textarea name="description"></textarea>
             <button type="submit">Ajouter</button>
         </form>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
 
     </div>
 {% endblock %}
