@@ -17,7 +17,7 @@ class ArticleController extends Controller
             ->add('title', TextType::class)
             ->add('brand', TextType::class)
             ->add('description', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Post'))
+            ->add('ajouter', SubmitType::class, array('label' => 'Create Post'))
             ->getForm();
 
         $em = $this->getDoctrine()->getEntityManager();
@@ -64,6 +64,11 @@ class ArticleController extends Controller
      */
     public function deleteAction($id)
     {
+
+        $form = $this->createFormBuilder()
+            ->add('id article', IntegerType::class)
+            ->add('supprimer', SubmitType::class, array('label' => 'Create Post'))
+            ->getForm();
 
         $em = $this->getDoctrine()->getEntityManager();
 
